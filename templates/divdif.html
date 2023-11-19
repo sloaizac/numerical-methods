@@ -1,0 +1,51 @@
+{% extends "layout.html" %} {% block body %}
+<div class="w3-row  w3-margin">
+    <div class="w3-col s4 w3-center w3-padding">
+        <div class="w3-container w3-indigo w3-round-large">
+            <h2>Newton (Divided difference method)</h2>
+        </div>
+        <div class="w3-container w3-white w3-padding-16 w3-round-large">
+            <form method="POST" action="/divdif" class="w3-margin">
+                <div class="w3-row-padding" style="margin: 0 -16px">
+                    <div class="w3-half w3-margin-bottom">
+                        <label>X Points</label>
+                        <input
+                        class="w3-input w3-border"
+                        type="text"
+                        name="xi"
+                        id="xi"
+                        required
+                        />
+                    </div>
+                    <div class="w3-half">
+                        <label>Y Points</label>
+                        <input
+                        class="w3-input w3-border"
+                        type="text"
+                        name="yi"
+                        id="yi"
+                        required
+                        />
+                    </div>
+                </div>
+                <button class="w3-button w3-indigo w3-round-large" type="submit">
+                    <i class="fa fa-search w3-margin-right"></i> View results
+                </button>
+            </form>
+            <a class="w3-button w3-indigo w3-round-large" href="{{ url_for('inicio_funciones') }}">Come back to methods </a>
+        </div>
+    </div>
+    <div class="w3-col s8 w3-center w3-padding">
+        {% if polinomio is not none %}
+        <div>
+            {{ polinomio | safe}}
+        </div>
+    </br>
+    </br>
+    <div hidden>
+        {{ plt.show() | safe }}
+    </div>
+        {% endif %}
+</div>
+</div>
+{% endblock %}

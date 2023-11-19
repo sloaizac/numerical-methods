@@ -1,0 +1,100 @@
+{% extends "layout.html" %} {% block body %}
+<div class="w3-row  w3-margin">
+    <div class="w3-col s4 w3-center w3-padding">
+        <div class="w3-container w3-indigo w3-round-large">
+            <h2>False Rule</h2>
+        </div>
+        <div class="w3-container w3-white w3-padding-16 w3-round-large">
+            <form method="POST" action="/falseRule" class="w3-margin">
+                <div class="w3-row-padding" style="margin: 0 -16px">
+                    <div class="w3-half w3-margin-bottom">
+                        <label>Function</label>
+                        <input
+                        class="w3-input w3-border"
+                        type="text"
+                        name="ecua"
+                        id="ecua"
+                        required
+                        />
+                    </div>
+                    <div class="w3-half">
+                        <label> Tolerance </label>
+                        <input
+                        class="w3-input w3-border"
+                        type="number"
+                        step=any
+                        name="tolera"
+                        id="tolera"
+                        required
+                        />
+                    </div>
+                </div>
+                <div class="w3-row-padding" style="margin: 8px -16px">
+                    <div class="w3-half w3-margin-bottom">
+                        <label>Interval A</label>
+                        <input
+                        class="w3-input w3-border"
+                        type="number"4
+                        step=any
+                        name="a"
+                        id="a"
+                        required
+                        />
+                    </div>
+                    <div class="w3-half">
+                        <label>Interval B</label>
+                        <input
+                        class="w3-input w3-border"
+                        type="number"
+                        step=any
+                        name="b"
+                        id="b"
+                        required
+                        />
+                    </div>
+                </div>
+                <button class="w3-button w3-indigo w3-round-large" type="submit">
+                    <i class="fa fa-search w3-margin-right"></i> View results
+                </button>
+            </form>
+            <button class="w3-button w3-indigo w3-round-large" onclick="openModal()">
+                <i class="fa fa-info-circle w3-margin-right"></i> How write the function?
+            </button>
+            <a class="w3-button w3-indigo w3-round-large" href="{{ url_for('inicio_funciones') }}">Come back to methods </a>
+        </div>
+    </div>
+    <div class="w3-col s8 w3-center w3-padding">
+        {% if result is not none %}
+    <table class="w3-table-all w3-small w3-centered w3-round-large">
+        <thead>
+            <tr class="w3-indigo">
+                <th>Iteration</th>
+                <th>Interval a</th>
+                <th>Interval b</th>
+                <th>F (a)</th>
+                <th>F (b)</th>
+                <th>Xi</th>
+                <th>Error</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for index, row in result.iterrows() %}
+            <tr>
+                <td>{{ row['Iteracion'] }}</td>
+                <td>{{ row['a'] }}</td>
+                <td>{{ row['b'] }}</td>
+                <td>{{ row['f(a)'] }}</td>
+                <td>{{ row['f(b)'] }}</td>
+                <td>{{ row['Xi'] }}</td>
+                <td>{{ row['Error'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div hidden>
+        {{ plt.show() | safe }}
+    </div>
+    {% endif %}
+</div>
+</div>
+{% endblock %}

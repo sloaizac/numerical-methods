@@ -1,0 +1,32 @@
+{% extends './layout.html' %}
+{% block body %}
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-container">
+      
+      <h1 class="w3-jumbo" style="font-family: 'Montserrat', sans-serif;">Methods</h1>
+      <p>Methods to solve numerical problems</p>
+      
+      <h2 class="w3-x-large" style="font-family: 'Montserrat', sans-serif;">Chapter 2: Numerical Solution of Nonlinear Equations</h2>
+      <a class="w3-button w3-round-xlarge w3-indigo w3-padding-large w3-round-large w3-margin-top" href="{{ url_for('bisection') }}">Bisection</a>
+      <a class="w3-button w3-round-xlarge w3-indigo w3-padding-large w3-round-large w3-margin-top" href="{{ url_for('busqincr') }}">Incremental search</a>
+      <a class="w3-button w3-round-xlarge w3-indigo w3-padding-large w3-round-large w3-margin-top" href="{{ url_for('pf') }}">Fixed Point</a>
+      <a class="w3-button w3-round-xlarge w3-indigo w3-padding-large w3-round-large w3-margin-top" href="{{ url_for('falseRule') }}">False rule</a>
+      <a class="w3-button w3-round-xlarge w3-indigo w3-padding-large w3-round-large w3-margin-top" href="{{ url_for('newton') }}">Newton</a>
+      <a class="w3-button w3-round-xlarge w3-indigo w3-padding-large w3-round-large w3-margin-top" href="{{ url_for('secant') }}">Secant</a>
+      <a class="w3-button w3-round-xlarge w3-indigo w3-padding-large w3-round-large w3-margin-top" href="{{ url_for('multipleRoots') }}">Multiple Roots</a>
+
+      <h2 class="w3-x-large" style="font-family: 'Montserrat', sans-serif;">Chapter 3: Numerical Solution of Equations</h2>
+      <a class="w3-button w3-round-xlarge w3-indigo w3-padding-large w3-round-large w3-margin-top" href="{{ url_for('jacobi') }}">Jacobi</a>
+      <a class="w3-button w3-round-xlarge w3-indigo w3-padding-large w3-round-large w3-margin-top" href="{{ url_for('seidel') }}">Gauss seidel</a>
+      <a class="w3-button w3-round-xlarge w3-indigo w3-padding-large w3-round-large w3-margin-top" href="{{ url_for('sor') }}">Sor</a>
+
+      <h2 class="w3-x-large" style="font-family: 'Montserrat', sans-serif;">Interpolation</h2>
+      <a class="w3-button w3-round-xlarge w3-indigo w3-padding-large w3-round-large w3-margin-top" href="{{ url_for('vandermonde') }}">Vandermonde</a>
+      <a class="w3-button w3-round-xlarge w3-indigo w3-padding-large w3-round-large w3-margin-top" href="{{ url_for('divdif') }}">Newton (Divided difference method)</a>
+      <a class="w3-button w3-round-xlarge w3-indigo w3-padding-large w3-round-large w3-margin-top" href="{{ url_for('spline1') }}">Spline (linear and cubic)</a>
+      
+    </div>
+  </div>
+</div>
+{% endblock %}

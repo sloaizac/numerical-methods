@@ -1,0 +1,103 @@
+{% extends "layout.html" %} {% block body %}
+<div class="w3-row  w3-margin">
+    <div class="w3-col s4 w3-center w3-padding">
+        <div class="w3-container w3-indigo w3-round-large">
+            <h2>Gauss Seidel</h2>
+        </div>
+        <div class="w3-container w3-white w3-padding-16 w3-round-large">
+            <form method="POST" action="/seidel" class="w3-margin">
+                <div class="w3-row-padding" style="margin: 0 -16px">
+                    <div class="w3-half w3-margin-bottom">
+                        <label>Matriz A</label>
+                        <input
+                        class="w3-input w3-border"
+                        type="text"
+                        name="A"
+                        id="A"
+                        required
+                        />
+                    </div>
+                    <div class="w3-half">
+                        <label>Matriz B</label>
+                        <input
+                        class="w3-input w3-border"
+                        type="text"
+                        name="B"
+                        id="B"
+                        required
+                        />
+                    </div>
+                </div>
+                <div class="w3-row-padding" style="margin: 8px -16px">
+                    <div class="w3-half w3-margin-bottom">
+                        <label>Iterations</label>
+                        <input
+                        class="w3-input w3-border"
+                        type="number"
+                        step=any
+                        name="ite"
+                        id="ite"
+                        required
+                        />
+                    </div>
+                    <div class="w3-half">
+                        <label> Tolerance </label>
+                        <input
+                        class="w3-input w3-border"
+                        type="text"
+                        name="tol"
+                        id="tol"
+                        required
+                        />
+                    </div>
+                    </div>
+                </div>
+                <button class="w3-button w3-indigo w3-round-large" type="submit">
+                    <i class="fa fa-search w3-margin-right"></i> View results
+                </button>
+                <a class="w3-button w3-indigo w3-round-large" href="{{ url_for('inicio_funciones') }}">Come back to methods </a>
+            </form>
+            <div class="w3-row" style="width:90%">
+                <div class="w3-dropdown-hover w3-block w3-padding w3-margin w3-indigo w3-round-large">How to put the data?
+                    <div class="w3-dropdown-content">
+                        <div class="w3-container">
+                            <p>In order to enter the matrix it is necessary to put it in this format</p>
+                            <p> "1 2 3 ; 4 5 6; 7 8 9" </p>
+                            <ul>
+                                <li><p>where the spaces are the columns </p></li> 
+                                <li><p>and the " ; " are the rows</p></li> 
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-margin w3-center">
+                {% if result is not none %}
+            {{ result.to_html(index=False, header=False) | safe}}  
+            {% endif %}
+            </div>
+    </div>
+    <div class="w3-col s8 w3-center w3-padding">
+        {% if result is not none %}
+    <table class="w3-table-all w3-centered w3-round-large">
+        <thead>
+            <tr class="w3-indigo">
+                <th>Iteration</th>
+                <th>Error</th>
+                <th>Xi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for index, row in tabla.iterrows() %}
+            <tr>
+                <td>{{ row['Iteration'] }}</td>
+                <td>{{ row['Error'] }}</td>
+                <td>{{ row[''] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+</div>
+{% endblock %}
